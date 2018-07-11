@@ -20,5 +20,9 @@ public abstract class Player {
 		cardNum.put(c, cardNum.get(c)+1);
 	}
 
+	public int getNum(Card c) {
+		return;
+	}
+
 
 }
