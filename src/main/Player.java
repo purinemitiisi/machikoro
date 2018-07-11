@@ -3,25 +3,29 @@ package main;
 import java.util.EnumMap;
 import java.util.Map;
 
-public abstract class Player {
+public class Player {
 	private int coin;
-	private Map<Card, Integer> cardNum;
+	private Map<Card, Integer> cardNumMap;
 
 	Player() {
-		cardNum = new EnumMap<Card, Integer>(Card.class);
-		cardNum.put(Card.WHEAT_FIRLD, 1);
-		cardNum.put(Card.BAKERY,      1);
+		cardNumMap = new EnumMap<Card, Integer>(Card.class);
+		cardNumMap.put(Card.WHEAT_FIRLD, 1);
+		cardNumMap.put(Card.BAKERY,      1);
 	}
 
 	public void addCard(Card c) {
-		if (!cardNum.containsKey(c)) {
-			cardNum.put(c, 1);
+		if (!cardNumMap.containsKey(c)) {
+			cardNumMap.put(c, 1);
 		}
-		cardNum.put(c, cardNum.get(c)+1);
+		cardNumMap.put(c, cardNumMap.get(c)+1);
 	}
 
 	public int getNum(Card c) {
-		return;
+		return cardNumMap.getOrDefault(c,0);
+	}
+
+	public int getNum(Type t) {
+		return cardNumMap.getOrDefault(t,0);
 	}
 
 
